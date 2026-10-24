@@ -1,0 +1,2 @@
+# reject-custom.list — 自定义拦截（Surge 建议 REJECT-DROP）
+DOMAIN-SUFFIX,hightouch-events.com

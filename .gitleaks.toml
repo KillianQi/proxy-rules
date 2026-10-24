@@ -1,0 +1,17 @@
+# gitleaks 配置：沿用官方默认规则，并补充代理相关的写法。
+title = "proxy-rules"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "proxy-share-uri"
+description = "Proxy share link with credentials"
+regex = '''(?i)\b(?:ss|ssr|vmess|vless|trojan|hysteria2?|hy2|tuic|anytls)://[A-Za-z0-9+/=_%.\-]{8,}'''
+keywords = ["://"]
+
+[[rules]]
+id = "surge-proxy-secret"
+description = "Surge / Clash proxy password, PSK or obfs secret"
+regex = '''(?i)\b(?:psk|password|obfs-password|preshared-key|private-key)\s*[=:]\s*["']?[^\s,"']{6,}'''
+keywords = ["psk", "password", "preshared", "private-key"]

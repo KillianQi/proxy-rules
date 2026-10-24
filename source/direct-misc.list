@@ -1,0 +1,6 @@
+# direct-misc.list — 其他直连
+# 小红书（关键词，Surge 建议配合 extended-matching）
+DOMAIN-KEYWORD,xiaohongshu
+# BoxJs
+DOMAIN-SUFFIX,boxjs.com
+DOMAIN-SUFFIX,boxjs.net

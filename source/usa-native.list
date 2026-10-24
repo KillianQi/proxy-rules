@@ -1,0 +1,151 @@
+# usa-native.list — 需要美国原生 IP 出口的服务（金融 / KYC / 风控 / 券商 / Claude 配套等）
+# 种子：2026-10-19 版 USA.list 原样入库（121 条规则，顺序与分组不变）。以后新增直接加在对应分组下。
+# 出口由引用本列表的 RULE-SET / rule-provider 指定，本文件不写策略。
+
+# 身份验证、客服与通知资源
+DOMAIN-SUFFIX,sardine.ai
+DOMAIN-SUFFIX,socure.io
+DOMAIN-SUFFIX,withpersona.com
+DOMAIN-SUFFIX,socure.com
+DOMAIN-SUFFIX,online-metrix.net
+DOMAIN-SUFFIX,arkoselabs.com
+DOMAIN-SUFFIX,funcaptcha.com
+DOMAIN-SUFFIX,seon.io
+DOMAIN-SUFFIX,forter.com
+DOMAIN-SUFFIX,riskified.com
+DOMAIN-SUFFIX,kount.net
+DOMAIN-SUFFIX,kaptcha.com
+DOMAIN-SUFFIX,incognia.com
+DOMAIN-SUFFIX,jumio.com
+DOMAIN-SUFFIX,netverify.com
+DOMAIN-SUFFIX,onfido.com
+DOMAIN-SUFFIX,veriff.com
+DOMAIN-SUFFIX,veriff.me
+DOMAIN-SUFFIX,plaid.com
+DOMAIN-SUFFIX,alloy.co
+DOMAIN-SUFFIX,prove.com
+DOMAIN-SUFFIX,intercom.com
+DOMAIN-SUFFIX,intercom.io
+DOMAIN-SUFFIX,intercomcdn.com
+DOMAIN-SUFFIX,intercomassets.com
+DOMAIN-SUFFIX,braze.com
+
+# Equifax
+DOMAIN-KEYWORD,equifax
+
+# IBKR 及投资资讯资源
+DOMAIN-KEYWORD,ibkr
+DOMAIN-KEYWORD,ibllc
+DOMAIN-KEYWORD,interactivebrokers
+DOMAIN,c.go-mpulse.net
+DOMAIN,images.barrons.com
+DOMAIN,images.wsj.net
+DOMAIN,static.seekingalpha.com
+DOMAIN,staticx-tuner.zacks.com
+DOMAIN,thearorareport.com
+
+# American Express（AMEX）及配套资源
+DOMAIN-SUFFIX,aexp.com
+DOMAIN-SUFFIX,aexp-static.com
+DOMAIN-KEYWORD,americanexpress
+DOMAIN-SUFFIX,amex
+DOMAIN,assets.adobedtm.com
+DOMAIN,featureassets.org
+DOMAIN,prodregistryv2.org
+DOMAIN,c.contentsquare.net
+DOMAIN,ct.contentsquare.net
+DOMAIN,k-aus1.contentsquare.net
+DOMAIN,ct.pinterest.com
+DOMAIN,publisher-cdn-us.cardlytics.com
+DOMAIN,sp.analytics.yahoo.com
+DOMAIN,www.cdn-path.com
+DOMAIN,bf11886vua.bf.dynatrace.com
+DOMAIN,dev.visualwebsiteoptimizer.com
+DOMAIN,js-cdn.dynatrace.com
+DOMAIN,siteintercept.qualtrics.com
+
+# Experian
+DOMAIN,usa.experian.com
+
+# Ultra Mobile
+DOMAIN-KEYWORD,ultramobile
+
+# 长桥及相关域名
+DOMAIN-KEYWORD,lbkrs
+DOMAIN-KEYWORD,longbridge
+DOMAIN-KEYWORD,longportapp
+DOMAIN-SUFFIX,lbctrl.com
+
+# 其他既有券商相关域名
+DOMAIN-SUFFIX,wbrks.com
+
+# 富途及相关域名
+DOMAIN-SUFFIX,futuhk.com
+DOMAIN-SUFFIX,futu.link
+DOMAIN-SUFFIX,futunn.com
+DOMAIN-SUFFIX,futuhn.com
+DOMAIN-SUFFIX,futu.com
+DOMAIN-SUFFIX,futu0.com
+DOMAIN-SUFFIX,futu1.com
+DOMAIN-SUFFIX,futu2.com
+DOMAIN-SUFFIX,futu3.com
+DOMAIN-SUFFIX,futu4.com
+DOMAIN-SUFFIX,futu5.com
+DOMAIN-SUFFIX,futu6.com
+DOMAIN-SUFFIX,futu7.com
+DOMAIN-SUFFIX,futu8.com
+DOMAIN-SUFFIX,futu9.com
+DOMAIN-SUFFIX,futuinc.com
+DOMAIN-SUFFIX,futuniuniu.com
+DOMAIN-SUFFIX,futu.cn
+DOMAIN-SUFFIX,futu.hk
+DOMAIN-SUFFIX,futufin.com
+DOMAIN-SUFFIX,futuhk2.com
+DOMAIN-SUFFIX,futuholdings.com
+DOMAIN-SUFFIX,futuesop.com
+DOMAIN-SUFFIX,futubull.cn
+DOMAIN-SUFFIX,futuchain.com
+DOMAIN-SUFFIX,futustatic.com
+DOMAIN-SUFFIX,futuau.com
+DOMAIN-SUFFIX,futuhkapp.com
+DOMAIN-SUFFIX,fututrade.com
+DOMAIN-SUFFIX,fututrustee.com
+DOMAIN-SUFFIX,futuoa.com
+DOMAIN-SUFFIX,futubos.com
+DOMAIN-SUFFIX,futusg.com
+DOMAIN-SUFFIX,futuie.com
+DOMAIN-SUFFIX,futuhainan.com
+
+# Fingerprint（设备指纹 / 反欺诈，Persona 等调用；备用域名会随广告拦截列表更换）
+DOMAIN-SUFFIX,fpjs.io
+DOMAIN-SUFFIX,fpjs.pro
+DOMAIN-SUFFIX,fpcdn.io
+DOMAIN-SUFFIX,fpjscdn.net
+DOMAIN-SUFFIX,fpnpmcdn.net
+DOMAIN-SUFFIX,fptls.com
+DOMAIN-SUFFIX,fptls2.com
+DOMAIN-SUFFIX,fptls3.com
+
+# Claude / Anthropic 配套第三方（anthropic/claude/stripe.com 主域已由 VPSDance global.list 覆盖）
+DOMAIN-SUFFIX,stripe.network
+DOMAIN-SUFFIX,stripecdn.com
+DOMAIN-SUFFIX,hcaptcha.com
+DOMAIN-SUFFIX,metronome.com
+DOMAIN-SUFFIX,intercom.help
+DOMAIN-SUFFIX,intercomusercontent.com
+DOMAIN-SUFFIX,intercom-reporting.com
+DOMAIN-SUFFIX,intercom-sheets.com
+DOMAIN-KEYWORD,intercom-attachments
+# Claude 桌面版辅助进程 / Claude Code 原生安装（版本号文件名，Surge Mac 通配；mihomo 不支持通配，无效但无害）
+PROCESS-NAME,Claude Helper*
+PROCESS-NAME,/Users/*/.local/share/claude/versions/*
+
+# Kilo（kilo.ai、kilo.codes 已由 VPSDance global.list 覆盖）
+DOMAIN-SUFFIX,kilocode.ai
+DOMAIN-SUFFIX,kiloapps.io
+
+# 其他服务与 SDK
+DOMAIN-SUFFIX,cursorvm.com
+DOMAIN-SUFFIX,metaaivm.com
+DOMAIN-SUFFIX,appsflyersdk.com
+DOMAIN-SUFFIX,revenuecat.com

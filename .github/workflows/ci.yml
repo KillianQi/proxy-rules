@@ -1,0 +1,62 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  guard:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install tools (pinned + checksum verified)
+        run: |
+          pip install --quiet pyyaml==6.0.2
+          bash scripts/ci_tools.sh
+
+      - name: Generate dist/
+        run: python3 scripts/build.py
+
+      - name: dist/ must match source/
+        run: |
+          if [ -n "$(git status --porcelain -- dist)" ]; then
+            git status --short -- dist
+            echo "::error::dist/ is out of date. Run python3 scripts/build.py and commit the result."
+            exit 1
+          fi
+
+      - name: Rule + leak check
+        env:
+          DENY_SHA256: ${{ secrets.DENY_SHA256 }}
+        run: python3 scripts/check.py --require-deny
+
+      - name: gitleaks (working tree)
+        run: gitleaks dir . --config .gitleaks.toml --redact --no-banner --exit-code 1
+
+      - name: gitleaks (pushed commits)
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if [ -n "${BEFORE:-}" ] && [ "$BEFORE" != "0000000000000000000000000000000000000000" ] && git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            range="$BEFORE..$GITHUB_SHA"
+          else
+            range="$GITHUB_SHA"
+          fi
+          gitleaks git . --config .gitleaks.toml --redact --no-banner --exit-code 1 --log-opts="$range"

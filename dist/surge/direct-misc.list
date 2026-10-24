@@ -1,0 +1,7 @@
+# 由 scripts/build.py 从 source/direct-misc.list 生成，请勿手改。Generated file, do not edit.
+# direct-misc.list — 其他直连
+# 小红书（关键词，Surge 建议配合 extended-matching）
+DOMAIN-KEYWORD,xiaohongshu
+# BoxJs
+DOMAIN-SUFFIX,boxjs.com
+DOMAIN-SUFFIX,boxjs.net

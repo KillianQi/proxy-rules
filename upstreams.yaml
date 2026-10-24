@@ -1,0 +1,316 @@
+# upstreams.yaml — 各配置当前引用的第三方规则列表。
+# 配置继续引用原地址；本仓库只在 vendor/ 保存每日快照，供上游失效时应急切换。
+# 字段：url 原地址；path 快照路径；license 上游许可证；kind text|binary；
+#       min_lines（text）/ min_bytes（binary）下限；enabled=false 表示不在公开仓库存快照。
+# 同步保护：抓取失败、低于下限、或比上次快照缩水超过一半 → 保留旧快照并在 Actions 中告警。
+defaults:
+  max_shrink: 0.5
+upstreams:
+  - name: blankwonder-cn
+    url: https://raw.githubusercontent.com/Blankwonder/surge-list/master/cn.list
+    path: vendor/Blankwonder/surge-list/cn.list
+    license: none-declared
+    kind: text
+    min_lines: 1
+    enabled: false   # 上游未声明许可证，不在公开仓库转载；需要时另行在私有处备份
+  - name: metacubex-geoip-telegram-mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs
+    path: vendor/MetaCubeX/meta-rules-dat/geo/geoip/telegram.mrs
+    license: GPL-3.0
+    kind: binary
+    min_bytes: 64
+  - name: metacubex-apple-mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs
+    path: vendor/MetaCubeX/meta-rules-dat/geo/geosite/apple.mrs
+    license: GPL-3.0
+    kind: binary
+    min_bytes: 3571
+  - name: metacubex-category-ads-all-mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ads-all.mrs
+    path: vendor/MetaCubeX/meta-rules-dat/geo/geosite/category-ads-all.mrs
+    license: GPL-3.0
+    kind: binary
+    min_bytes: 1640
+  - name: metacubex-category-ai-cn-mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs
+    path: vendor/MetaCubeX/meta-rules-dat/geo/geosite/category-ai-!cn.mrs
+    license: GPL-3.0
+    kind: binary
+    min_bytes: 437
+  - name: metacubex-cn-mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs
+    path: vendor/MetaCubeX/meta-rules-dat/geo/geosite/cn.mrs
+    license: GPL-3.0
+    kind: binary
+    min_bytes: 106908
+  - name: metacubex-geolocation-cn-mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs
+    path: vendor/MetaCubeX/meta-rules-dat/geo/geosite/geolocation-!cn.mrs
+    license: GPL-3.0
+    kind: binary
+    min_bytes: 39811
+  - name: metacubex-github-mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs
+    path: vendor/MetaCubeX/meta-rules-dat/geo/geosite/github.mrs
+    license: GPL-3.0
+    kind: binary
+    min_bytes: 166
+  - name: metacubex-google-mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs
+    path: vendor/MetaCubeX/meta-rules-dat/geo/geosite/google.mrs
+    license: GPL-3.0
+    kind: binary
+    min_bytes: 1785
+  - name: metacubex-microsoft-mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs
+    path: vendor/MetaCubeX/meta-rules-dat/geo/geosite/microsoft.mrs
+    license: GPL-3.0
+    kind: binary
+    min_bytes: 1558
+  - name: metacubex-private-mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs
+    path: vendor/MetaCubeX/meta-rules-dat/geo/geosite/private.mrs
+    license: GPL-3.0
+    kind: binary
+    min_bytes: 156
+  - name: metacubex-telegram-mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs
+    path: vendor/MetaCubeX/meta-rules-dat/geo/geosite/telegram.mrs
+    license: GPL-3.0
+    kind: binary
+    min_bytes: 64
+  - name: vpsdance-global
+    url: https://raw.githubusercontent.com/VPSDance/ai-proxy-rules/main/rules/surge/global.list
+    path: vendor/VPSDance/ai-proxy-rules/rules/surge/global.list
+    license: MIT
+    kind: text
+    min_lines: 68
+  - name: blackmatrix7-advertisinglite-domain-yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdvertisingLite/AdvertisingLite_Domain.yaml
+    path: vendor/blackmatrix7/ios_rule_script/rule/Clash/AdvertisingLite/AdvertisingLite_Domain.yaml
+    license: GPL-2.0
+    kind: text
+    min_lines: 7538
+  - name: blackmatrix7-globalmedia-classical-no-resolve-yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Classical_No_Resolve.yaml
+    path: vendor/blackmatrix7/ios_rule_script/rule/Clash/GlobalMedia/GlobalMedia_Classical_No_Resolve.yaml
+    license: GPL-2.0
+    kind: text
+    min_lines: 453
+  - name: blackmatrix7-advertisinglite-all
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AdvertisingLite/AdvertisingLite_All.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/AdvertisingLite/AdvertisingLite_All.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 7613
+  - name: blackmatrix7-advertisinglite-all-no-resolve
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AdvertisingLite/AdvertisingLite_All_No_Resolve.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/AdvertisingLite/AdvertisingLite_All_No_Resolve.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 7613
+  - name: blackmatrix7-apple-all
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Apple/Apple_All.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Apple/Apple_All.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 323
+  - name: blackmatrix7-apple-all-no-resolve
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Apple/Apple_All_No_Resolve.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Apple/Apple_All_No_Resolve.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 323
+  - name: blackmatrix7-bilibili
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/BiliBili/BiliBili.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/BiliBili/BiliBili.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 26
+  - name: blackmatrix7-bing
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Bing/Bing.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Bing/Bing.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 1
+  - name: blackmatrix7-chinaasn-resolve
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/ChinaASN/ChinaASN_Resolve.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/ChinaASN/ChinaASN_Resolve.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 201
+  - name: blackmatrix7-chinamedia
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/ChinaMedia/ChinaMedia.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/ChinaMedia/ChinaMedia.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 89
+  - name: blackmatrix7-cloudflare
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Cloudflare/Cloudflare.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Cloudflare/Cloudflare.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 13
+  - name: blackmatrix7-duolingo
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Duolingo/Duolingo.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Duolingo/Duolingo.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 1
+  - name: blackmatrix7-epic
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Epic/Epic.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Epic/Epic.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 3
+  - name: blackmatrix7-github
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GitHub/GitHub.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/GitHub/GitHub.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 6
+  - name: blackmatrix7-globalmedia-all-no-resolve
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GlobalMedia/GlobalMedia_All_No_Resolve.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/GlobalMedia/GlobalMedia_All_No_Resolve.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 467
+  - name: blackmatrix7-google
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Google/Google.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Google/Google.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 140
+  - name: blackmatrix7-googlevoice
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GoogleVoice/GoogleVoice.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/GoogleVoice/GoogleVoice.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 1
+  - name: blackmatrix7-hijacking
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Hijacking/Hijacking.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Hijacking/Hijacking.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 45
+  - name: blackmatrix7-hijacking-resolve
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Hijacking/Hijacking_Resolve.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Hijacking/Hijacking_Resolve.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 45
+  - name: blackmatrix7-microsoft
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Microsoft/Microsoft.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Microsoft/Microsoft.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 134
+  - name: blackmatrix7-nintendo
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Nintendo/Nintendo.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Nintendo/Nintendo.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 25
+  - name: blackmatrix7-openai
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/OpenAI/OpenAI.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/OpenAI/OpenAI.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 7
+  - name: blackmatrix7-privacy-all
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Privacy/Privacy_All.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Privacy/Privacy_All.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 7987
+  - name: blackmatrix7-proxy-all-no-resolve
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Proxy/Proxy_All_No_Resolve.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Proxy/Proxy_All_No_Resolve.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 1394
+  - name: blackmatrix7-sony
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Sony/Sony.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Sony/Sony.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 23
+  - name: blackmatrix7-speedtest
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Speedtest/Speedtest.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Speedtest/Speedtest.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 1
+  - name: blackmatrix7-spotify
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Spotify/Spotify.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Spotify/Spotify.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 6
+  - name: blackmatrix7-spotify-resolve
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Spotify/Spotify_Resolve.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Spotify/Spotify_Resolve.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 6
+  - name: blackmatrix7-steam
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Steam/Steam.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Steam/Steam.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 13
+  - name: blackmatrix7-telegram
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Telegram/Telegram.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Telegram/Telegram.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 9
+  - name: blackmatrix7-telegram-resolve
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Telegram/Telegram_Resolve.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/Telegram/Telegram_Resolve.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 9
+  - name: blackmatrix7-usmedia
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/USMedia/USMedia.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/USMedia/USMedia.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 20
+  - name: blackmatrix7-wechat
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/WeChat/WeChat.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/WeChat/WeChat.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 66
+  - name: blackmatrix7-youtube
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/YouTube/YouTube.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/YouTube/YouTube.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 38
+  - name: blackmatrix7-icloud
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/iCloud/iCloud.list
+    path: vendor/blackmatrix7/ios_rule_script/rule/Surge/iCloud/iCloud.list
+    license: GPL-2.0
+    kind: text
+    min_lines: 12
+  - name: fatesdf-ai-muse
+    url: https://raw.githubusercontent.com/fatesdf/surge-rules/refs/heads/main/ai-muse.conf
+    path: vendor/fatesdf/surge-rules/ai-muse.conf
+    license: none-declared
+    kind: text
+    min_lines: 1
+    enabled: false   # 上游未声明许可证，不在公开仓库转载；需要时另行在私有处备份
+  - name: privacy-anti-ad-clash-yaml
+    url: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-clash.yaml
+    path: vendor/privacy-protection-tools/anti-AD/anti-ad-clash.yaml
+    license: MIT
+    kind: text
+    min_lines: 20889
+  - name: privacy-anti-ad-surge2-txt
+    url: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-surge2.txt
+    path: vendor/privacy-protection-tools/anti-AD/anti-ad-surge2.txt
+    license: MIT
+    kind: text
+    min_lines: 20889

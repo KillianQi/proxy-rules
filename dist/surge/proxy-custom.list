@@ -1,0 +1,3 @@
+# 由 scripts/build.py 从 source/proxy-custom.list 生成，请勿手改。Generated file, do not edit.
+# proxy-custom.list — 走代理（节点选择）的零散域名
+DOMAIN-SUFFIX,yfamilys.com

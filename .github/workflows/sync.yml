@@ -1,0 +1,61 @@
+name: sync
+
+# 每天 19:30 UTC = 03:30 UTC+8（早于 VPS 04:20 的只读拉取）
+on:
+  schedule:
+    - cron: "30 19 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install tools (pinned + checksum verified)
+        run: |
+          pip install --quiet pyyaml==6.0.2
+          bash scripts/ci_tools.sh
+
+      # Failed / tiny / >50% shrunken downloads keep the previous snapshot (warning only).
+      - name: Refresh vendor/ snapshots
+        run: python3 scripts/sync_vendor.py
+
+      - name: Generate dist/
+        run: python3 scripts/build.py
+
+      - name: Rule + leak check
+        env:
+          DENY_SHA256: ${{ secrets.DENY_SHA256 }}
+        run: python3 scripts/check.py --require-deny
+
+      - name: gitleaks (working tree)
+        run: gitleaks dir . --config .gitleaks.toml --redact --no-banner --exit-code 1
+
+      - name: Commit only on change
+        run: |
+          git add -A -- vendor dist
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          git diff --cached --stat
+          git -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -m "sync: vendor snapshots $(date -u +%F)"
+          git pull --rebase origin main
+          git push origin HEAD:main

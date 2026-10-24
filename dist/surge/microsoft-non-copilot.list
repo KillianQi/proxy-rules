@@ -1,0 +1,7 @@
+# 由 scripts/build.py 从 source/microsoft-non-copilot.list 生成，请勿手改。Generated file, do not edit.
+# microsoft-non-copilot.list — 原生IP 例外：微软非 Copilot 的资讯 / 定位 / 遥测域名，走微软服务策略
+# 必须排在 usa-native.list 和 Copilot / AI 列表之前引用。
+DOMAIN,api.msn.com
+DOMAIN,assets.msn.com
+DOMAIN,location.microsoft.com
+DOMAIN,self.events.data.microsoft.com

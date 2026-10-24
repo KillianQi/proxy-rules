@@ -1,0 +1,5 @@
+# 由 scripts/build.py 从 source/ai-extra.list 生成，请勿手改。Generated file, do not edit.
+payload:
+  - 'DOMAIN-SUFFIX,meta.com'
+  - 'DOMAIN-SUFFIX,hatch.one'
+  - 'DOMAIN-SUFFIX,willow606.com'

@@ -1,0 +1,5 @@
+# 由 scripts/build.py 从 source/microsoft-non-copilot.list 生成，请勿手改。Generated file, do not edit.
+api.msn.com
+assets.msn.com
+location.microsoft.com
+self.events.data.microsoft.com

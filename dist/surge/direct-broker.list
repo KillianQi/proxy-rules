@@ -1,0 +1,46 @@
+# 由 scripts/build.py 从 source/direct-broker.list 生成，请勿手改。Generated file, do not edit.
+# direct-broker.list — 原生IP 例外：富途 / 长桥走直连
+# 必须排在 usa-native.list 之前引用（usa-native 里也有这些条目，用于没有直连例外的配置）。
+
+# 长桥
+DOMAIN-KEYWORD,lbkrs
+DOMAIN-KEYWORD,longbridge
+DOMAIN-KEYWORD,longportapp
+DOMAIN-SUFFIX,lbctrl.com
+
+# 富途
+DOMAIN-SUFFIX,futuhk.com
+DOMAIN-SUFFIX,futu.link
+DOMAIN-SUFFIX,futunn.com
+DOMAIN-SUFFIX,futuhn.com
+DOMAIN-SUFFIX,futu.com
+DOMAIN-SUFFIX,futu0.com
+DOMAIN-SUFFIX,futu1.com
+DOMAIN-SUFFIX,futu2.com
+DOMAIN-SUFFIX,futu3.com
+DOMAIN-SUFFIX,futu4.com
+DOMAIN-SUFFIX,futu5.com
+DOMAIN-SUFFIX,futu6.com
+DOMAIN-SUFFIX,futu7.com
+DOMAIN-SUFFIX,futu8.com
+DOMAIN-SUFFIX,futu9.com
+DOMAIN-SUFFIX,futuinc.com
+DOMAIN-SUFFIX,futuniuniu.com
+DOMAIN-SUFFIX,futu.cn
+DOMAIN-SUFFIX,futu.hk
+DOMAIN-SUFFIX,futufin.com
+DOMAIN-SUFFIX,futuhk2.com
+DOMAIN-SUFFIX,futuholdings.com
+DOMAIN-SUFFIX,futuesop.com
+DOMAIN-SUFFIX,futubull.cn
+DOMAIN-SUFFIX,futuchain.com
+DOMAIN-SUFFIX,futustatic.com
+DOMAIN-SUFFIX,futuau.com
+DOMAIN-SUFFIX,futuhkapp.com
+DOMAIN-SUFFIX,fututrade.com
+DOMAIN-SUFFIX,fututrustee.com
+DOMAIN-SUFFIX,futuoa.com
+DOMAIN-SUFFIX,futubos.com
+DOMAIN-SUFFIX,futusg.com
+DOMAIN-SUFFIX,futuie.com
+DOMAIN-SUFFIX,futuhainan.com

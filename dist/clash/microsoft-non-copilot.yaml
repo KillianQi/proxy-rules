@@ -1,0 +1,6 @@
+# 由 scripts/build.py 从 source/microsoft-non-copilot.list 生成，请勿手改。Generated file, do not edit.
+payload:
+  - 'DOMAIN,api.msn.com'
+  - 'DOMAIN,assets.msn.com'
+  - 'DOMAIN,location.microsoft.com'
+  - 'DOMAIN,self.events.data.microsoft.com'

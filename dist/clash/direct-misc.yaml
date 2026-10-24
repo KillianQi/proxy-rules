@@ -1,0 +1,5 @@
+# 由 scripts/build.py 从 source/direct-misc.list 生成，请勿手改。Generated file, do not edit.
+payload:
+  - 'DOMAIN-KEYWORD,xiaohongshu'
+  - 'DOMAIN-SUFFIX,boxjs.com'
+  - 'DOMAIN-SUFFIX,boxjs.net'
