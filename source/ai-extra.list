@@ -1,5 +1,5 @@
-# ai-extra.list — 原 fatesdf/surge-rules ai-muse.conf 中、VPSDance / MetaCubeX 都未覆盖的 3 条（Meta AI / Muse 相关）
-# 用于替换 ai-muse.conf 引用；与 usa-native.list 同一出口（美国原生 IP）。
+# ai-extra.list — VPSDance / MetaCubeX AI 列表都未覆盖的 3 条（Meta AI / Muse 相关）
+# 与 usa-native.list 同一出口（美国原生 IP）。
 DOMAIN-SUFFIX,meta.com
 DOMAIN-SUFFIX,hatch.one
 DOMAIN-SUFFIX,willow606.com

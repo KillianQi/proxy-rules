@@ -6,13 +6,12 @@
 defaults:
   max_shrink: 0.5
 upstreams:
-  - name: blankwonder-cn
-    url: https://raw.githubusercontent.com/Blankwonder/surge-list/master/cn.list
-    path: vendor/Blankwonder/surge-list/cn.list
-    license: none-declared
+  - name: metacubex-cn-classical-list
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/cn.list
+    path: vendor/MetaCubeX/meta-rules-dat/geo/geosite/classical/cn.list
+    license: GPL-3.0
     kind: text
-    min_lines: 1
-    enabled: false   # 上游未声明许可证，不在公开仓库转载；需要时另行在私有处备份
+    min_lines: 50000   # 替代已停更的 Blankwonder/surge-list cn.list；Surge classical 语法（DOMAIN-SUFFIX）
   - name: metacubex-geoip-telegram-mrs
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs
     path: vendor/MetaCubeX/meta-rules-dat/geo/geoip/telegram.mrs
@@ -295,13 +294,6 @@ upstreams:
     license: GPL-2.0
     kind: text
     min_lines: 12
-  - name: fatesdf-ai-muse
-    url: https://raw.githubusercontent.com/fatesdf/surge-rules/refs/heads/main/ai-muse.conf
-    path: vendor/fatesdf/surge-rules/ai-muse.conf
-    license: none-declared
-    kind: text
-    min_lines: 1
-    enabled: false   # 上游未声明许可证，不在公开仓库转载；需要时另行在私有处备份
   - name: privacy-anti-ad-clash-yaml
     url: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-clash.yaml
     path: vendor/privacy-protection-tools/anti-AD/anti-ad-clash.yaml
