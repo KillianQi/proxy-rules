@@ -8,6 +8,7 @@ Outputs per list NAME:
   dist/clash/NAME.txt             mihomo rule-provider, behavior: classical, format: text
   dist/clash/domain/NAME.txt      mihomo behavior: domain, format: text (domain-only lists)
   dist/clash/domain/NAME.mrs      same as .mrs, only if a `mihomo` binary is on PATH (or --mihomo)
+  dist/surge/killian/*            integrated lists defined in composites.yaml (scripts/composites.py)
 
 Usage: python3 scripts/build.py [--mihomo PATH] [--no-mrs]
 """
@@ -19,6 +20,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from rules_common import RuleError, is_comment, parse_rule, validate_rule  # noqa: E402
+import composites  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "source")
@@ -102,6 +104,7 @@ def main():
         print("\n".join(all_errors), file=sys.stderr)
         sys.exit(1)
 
+    prev_composites = composites.snapshot_previous()
     shutil.rmtree(DIST, ignore_errors=True)
     for name, rows in built.items():
         rules = [r for kind, r in rows if kind == "rule"]
@@ -132,6 +135,7 @@ def main():
         print("%-24s %4d rules" % (name, len(rules)))
     if not (args.mihomo and not args.no_mrs):
         print("note: mihomo not found, .mrs skipped", file=sys.stderr)
+    composites.build(prev_composites)
 
 
 if __name__ == "__main__":

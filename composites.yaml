@@ -1,0 +1,69 @@
+# composites.yaml — 整合列表定义（只给 Killian 的托管配置用，输出到 dist/surge/killian/）
+# 规则：只合并在配置里原本相邻、策略和选项相同的列表，保持原有顺序；列表不写策略。
+# 字段：inputs 有序输入（source/ 或 vendor/ 路径；也可写 {path, only_types|drop_types} 按规则类型筛选）；exclude 剔除文件；format ruleset|domainset；
+#       min_rules 下限；max_shrink 相对上一版允许缩水的比例（超过则保留上一版并告警）。
+# 许可证：license 写合并产物需遵守的上游许可证（见 dist/surge/killian/NOTICE.md）。
+defaults:
+  max_shrink: 0.3
+composites:
+  - name: proxy
+    format: ruleset
+    license: MIT
+    inputs:
+      - source/proxy-extra.list
+      - source/proxy-custom.list
+    min_rules: 3
+  # direct / direct-ext 分开：原配置里只有小红书关键词带 extended-matching，拆开才能保持完全等价
+  - name: direct
+    format: ruleset
+    license: MIT
+    inputs:
+      - source/direct-broker.list
+      - {path: source/direct-misc.list, drop_types: [DOMAIN-KEYWORD]}
+      - source/direct-custom.list
+    min_rules: 40
+  - name: direct-ext
+    format: ruleset
+    license: MIT
+    inputs:
+      - {path: source/direct-misc.list, only_types: [DOMAIN-KEYWORD]}
+    min_rules: 1
+  - name: native
+    format: ruleset
+    license: MIT (VPSDance/ai-proxy-rules)
+    inputs:
+      - source/usa-native.list
+      - vendor/VPSDance/ai-proxy-rules/rules/surge/global.list
+    min_rules: 300
+  - name: reject-antiad
+    format: domainset
+    license: MIT (privacy-protection-tools/anti-AD)
+    inputs:
+      - vendor/privacy-protection-tools/anti-AD/anti-ad-surge2.txt
+    exclude:
+      - exclude/reject-allow.list
+    min_rules: 50000
+  - name: reject-adlite
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/AdvertisingLite/AdvertisingLite_All_No_Resolve.list
+    exclude:
+      - exclude/reject-allow.list
+    min_rules: 20000
+  - name: direct-cnmedia
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/BiliBili/BiliBili.list
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/ChinaMedia/ChinaMedia.list
+    min_rules: 300
+  - name: games
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/Epic/Epic.list
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/Sony/Sony.list
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/Steam/Steam.list
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/Nintendo/Nintendo.list
+    min_rules: 250

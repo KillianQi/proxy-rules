@@ -1,0 +1,3 @@
+# native-priority.list — 原生IP 的优先例外：必须排在 qaq-custom.list（sift 关键词）之前引用
+DOMAIN-SUFFIX,sift.com
+DOMAIN-SUFFIX,siftscience.com

@@ -15,7 +15,11 @@ Checks
      optionally --deny-file. Every token and every hostname suffix in the tree is hashed and compared.
      Neither the values nor their digests live in this repository; matches are reported by file and
      line only, never by content.
-  5. Size floors: usa-native must keep at least MIN_RULES rules.
+  5. Size floors: usa-native must keep at least MIN_RULES rules; dist/surge/killian composites must
+     meet their min_rules from composites.yaml.
+  6. dist/surge/killian (integrated lists that embed vendor/ content): rule types limited to
+     COMPOSITE_TYPES, DOMAIN-SET lines must be domains; leak scan uses the vendor/ pattern set because
+     upstream lists contain third-party private ranges (our own lines are fully checked in source/).
 """
 import argparse
 import hashlib
@@ -29,6 +33,9 @@ from rules_common import (CLASH_EXTRA_TYPES, SURGE_TYPES, RuleError, is_comment,
                           parse_rule, validate_rule)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+KILLIAN = os.path.join("dist", "surge", "killian")
+COMPOSITE_TYPES = SURGE_TYPES | {"USER-AGENT", "URL-REGEX", "AND", "OR", "NOT"}
+DOMAINSET_LINE = re.compile(r"^\.?(?:[a-z0-9_*-]+\.)*[a-z0-9_-]+$", re.I)
 SKIP_DIRS = {".git", "__pycache__", "node_modules"}
 SELF = os.path.relpath(os.path.abspath(__file__), ROOT)
 MIN_RULES = {"usa-native": 100}
@@ -143,13 +150,57 @@ def check_rules(errors):
     return rule_counts
 
 
+def check_composites(errors, rule_counts):
+    base = os.path.join(ROOT, KILLIAN)
+    if not os.path.isdir(base):
+        return
+    try:
+        import yaml
+        with open(os.path.join(ROOT, "composites.yaml"), encoding="utf-8") as f:
+            conf = yaml.safe_load(f)
+        floors = {c["name"]: c.get("min_rules", 1) for c in conf["composites"]}
+    except Exception as e:  # noqa: BLE001
+        errors.append("composites.yaml unreadable: %s" % e)
+        floors = {}
+    for fn in sorted(os.listdir(base)):
+        if not (fn.endswith(".list") or fn.endswith(".txt")):
+            continue
+        rel = os.path.join(KILLIAN, fn)
+        n_rules = 0
+        with open(os.path.join(ROOT, rel), encoding="utf-8") as f:
+            for n, line in enumerate(f, 1):
+                if is_comment(line):
+                    continue
+                n_rules += 1
+                line = line.strip()
+                if fn.endswith(".txt"):
+                    if not DOMAINSET_LINE.match(line):
+                        errors.append("%s:%d: bad DOMAIN-SET line" % (rel, n))
+                    continue
+                rtype = line.split(",", 1)[0].upper()
+                if rtype not in COMPOSITE_TYPES:
+                    errors.append("%s:%d: rule type %s is not allowed" % (rel, n, rtype))
+                elif rtype in SURGE_TYPES and rtype not in ("IP-CIDR", "IP-CIDR6"):
+                    try:
+                        parse_rule(line)
+                    except RuleError as e:
+                        errors.append("%s:%d: %s" % (rel, n, e))
+        rule_counts[rel] = n_rules
+        name = fn.rsplit(".", 1)[0]
+        if name in floors and n_rules < floors[name]:
+            errors.append("%s: only %d rules (floor %d)" % (rel, n_rules, floors[name]))
+    for name in floors:
+        if not any(os.path.exists(os.path.join(base, name + ext)) for ext in (".list", ".txt")):
+            errors.append("%s/%s: composite missing" % (KILLIAN, name))
+
+
 def check_leaks(errors, deny):
     scanned = 0
     for rel in iter_files():
         if not is_text(rel):
             continue
         scanned += 1
-        vendor = rel.startswith("vendor" + os.sep)
+        vendor = rel.startswith("vendor" + os.sep) or rel.startswith(KILLIAN + os.sep)
         with open(os.path.join(ROOT, rel), encoding="utf-8", errors="replace") as f:
             for n, line in enumerate(f, 1):
                 where = "%s:%d" % (rel, n)
@@ -191,6 +242,7 @@ def main():
         else:
             print("::warning::" + msg)
     counts = check_rules(errors)
+    check_composites(errors, counts)
     scanned = check_leaks(errors, deny)
     # de-duplicate, keep order
     errors = list(dict.fromkeys(errors))

@@ -35,8 +35,12 @@ jobs:
       - name: Refresh vendor/ snapshots
         run: python3 scripts/sync_vendor.py
 
+      # Also rebuilds dist/surge/killian/ from composites.yaml (fail-safe: floors + max_shrink keep the previous file).
       - name: Generate dist/
         run: python3 scripts/build.py
+
+      - name: Friend files unchanged
+        run: sha256sum -c ci/friend-files.sha256
 
       - name: Rule + leak check
         env:

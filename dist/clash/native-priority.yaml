@@ -1,0 +1,4 @@
+# 由 scripts/build.py 从 source/native-priority.list 生成，请勿手改。Generated file, do not edit.
+payload:
+  - 'DOMAIN-SUFFIX,sift.com'
+  - 'DOMAIN-SUFFIX,siftscience.com'

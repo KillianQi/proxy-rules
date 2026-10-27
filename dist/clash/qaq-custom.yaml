@@ -1,0 +1,4 @@
+# 由 scripts/build.py 从 source/qaq-custom.list 生成，请勿手改。Generated file, do not edit.
+payload:
+  - 'IP-ASN,14061,no-resolve'
+  - 'DOMAIN-KEYWORD,sift'

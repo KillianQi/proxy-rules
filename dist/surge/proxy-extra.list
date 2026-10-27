@@ -1,0 +1,5 @@
+# 由 scripts/build.py 从 source/proxy-extra.list 生成，请勿手改。Generated file, do not edit.
+# proxy-extra.list — 走代理（节点选择）的补充域名
+# Tailscale 控制面
+DOMAIN-SUFFIX,tailscale.com
+DOMAIN-SUFFIX,tailscale.io

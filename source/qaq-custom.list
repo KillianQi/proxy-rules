@@ -1,0 +1,5 @@
+# qaq-custom.list — 走主力代理组的例外：排在 native-priority.list 之后、原生IP 列表之前引用
+# DigitalOcean（仅匹配 IP 直连请求）
+IP-ASN,14061,no-resolve
+# sift 其余域名（挡住上游 AI 列表里的同名关键词）
+DOMAIN-KEYWORD,sift
