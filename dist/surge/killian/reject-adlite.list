@@ -1,8 +1,8 @@
 # 由 scripts/build.py 按 composites.yaml 生成（reject-adlite），请勿手改。Generated file, do not edit.
 # 来源（按顺序）：vendor/blackmatrix7/ios_rule_script/rule/Surge/AdvertisingLite/AdvertisingLite_All_No_Resolve.list
 # 许可证：GPL-2.0 (blackmatrix7/ios_rule_script)（见 dist/surge/killian/NOTICE.md）
-# 剔除：exclude/reject-allow.list，剔除 1 条
-# 规则数：38068
+# 剔除：exclude/reject-allow.list，剔除 0 条
+# 规则数：38069
 DOMAIN,00-gov.cn
 DOMAIN,0024aadd.com
 DOMAIN,0026645142c89aeb1.com
@@ -31859,6 +31859,7 @@ DOMAIN-SUFFIX,maxoi.cn
 DOMAIN-SUFFIX,maxwebsearch.com
 DOMAIN-SUFFIX,maxwellsery.com
 DOMAIN-SUFFIX,maysunmedia.com
+DOMAIN-SUFFIX,mazu.m.qq.com
 DOMAIN-SUFFIX,mb.gulongbbs.com
 DOMAIN-SUFFIX,mb.hockeybuzz.com
 DOMAIN-SUFFIX,mb.zam.com

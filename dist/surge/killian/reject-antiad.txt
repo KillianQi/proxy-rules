@@ -1,8 +1,8 @@
 # 由 scripts/build.py 按 composites.yaml 生成（reject-antiad），请勿手改。Generated file, do not edit.
 # 来源（按顺序）：vendor/privacy-protection-tools/anti-AD/anti-ad-surge2.txt
 # 许可证：MIT (privacy-protection-tools/anti-AD)（见 dist/surge/killian/NOTICE.md）
-# 剔除：exclude/reject-allow.list，剔除 1 条
-# 规则数：105191
+# 剔除：exclude/reject-allow.list，剔除 0 条
+# 规则数：105192
 .000491b06a.com
 .000dn.com
 .0013.cc
@@ -73218,6 +73218,7 @@
 .logs.game.qq.com
 .market.m.qq.com
 .masdkv6.3g.qq.com
+.mazu.m.qq.com
 .mdevstat.qqlive.qq.com
 .mdt.qq.com
 .monitor.music.qq.com

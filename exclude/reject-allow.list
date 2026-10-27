@@ -1,5 +1,8 @@
 # reject-allow.list — 从合并后的广告拦截列表里剔除的条目（白名单）
-# 语义：DOMAIN 只剔除完全相同的条目；DOMAIN-SUFFIX 剔除该域名及其子域名的 DOMAIN / DOMAIN-SUFFIX 条目。
-# 不会剔除更上层的后缀（例如 .qq.com）；若存在，build 会打印 warning。
-# QQ 同步助手（2026-10-27）
-DOMAIN-SUFFIX,mazu.m.qq.com
+# 语义：
+#   DOMAIN,x         只剔除完全相同的 DOMAIN 条目；上游若是覆盖 x 的后缀条目（如 .x 或 .父域），保留不删
+#                    （删了会连子域名一起放行），build 打印 warning，由配置里排在前面的直连规则决定 x 本身。
+#   DOMAIN-SUFFIX,x  剔除 x 及其所有子域名的 DOMAIN / DOMAIN-SUFFIX 条目（会放行子域名，需 Killian 确认）。
+# QQ 同步助手（2026-10-27）：只放行主机本身；anti-AD / AdvertisingLite 里是 .mazu.m.qq.com 后缀条目，
+# 因此两份广告列表保持不变，放行由 source/direct-custom.list（配置里排在广告列表之前）完成。
+DOMAIN,mazu.m.qq.com
