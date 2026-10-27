@@ -1,0 +1,6 @@
+# 由 scripts/build.py 按 composites.yaml 生成（direct-ext），请勿手改。Generated file, do not edit.
+# 来源（按顺序）：source/direct-misc.list
+# 许可证：MIT（见 dist/surge/killian/NOTICE.md）
+# 剔除：无，剔除 0 条
+# 规则数：1
+DOMAIN-KEYWORD,xiaohongshu

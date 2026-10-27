@@ -3,6 +3,8 @@ name: ci
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -41,6 +43,11 @@ jobs:
             echo "::error::dist/ is out of date. Run python3 scripts/build.py and commit the result."
             exit 1
           fi
+
+      # Friends' configs reference these files directly; they must stay byte-identical unless
+      # ci/friend-files.sha256 is updated on purpose in the same change.
+      - name: Friend files unchanged
+        run: sha256sum -c ci/friend-files.sha256
 
       - name: Rule + leak check
         env:
