@@ -1,0 +1,20 @@
+# 由 scripts/build.py 按 composites.yaml 生成（cn），请勿手改。Generated file, do not edit.
+# 原始地址：https://raw.githubusercontent.com/Blankwonder/surge-list/master/cn.list
+# 原作者：Blankwonder (https://github.com/Blankwonder)
+# 来源（按顺序）：vendor/Blankwonder/surge-list/cn.list
+# 许可证：none — no LICENSE upstream; mirrored with attribution, removed on request（见 dist/surge/killian/NOTICE.md）
+# 剔除：无，剔除 0 条
+# 规则数：13
+USER-AGENT,MicroMessenger Client
+USER-AGENT,WeChat*
+USER-AGENT,MApi* // Dianping
+DOMAIN-KEYWORD,alipay
+DOMAIN-KEYWORD,taobao
+DOMAIN-KEYWORD,alicdn
+DOMAIN-KEYWORD,aliyun
+DOMAIN-KEYWORD,.tmall.
+IP-CIDR,198.11.188.0/25,no-resolve
+IP-CIDR,198.11.136.0/24,no-resolve
+USER-AGENT,%E6%89%8B%E6%9C%BA%E6%B7%98%E5%AE%9D*
+DOMAIN-SUFFIX,CN
+DOMAIN-KEYWORD,baidu

@@ -1,0 +1,16 @@
+# 由 scripts/build.py 按 composites.yaml 生成（speedtest），请勿手改。Generated file, do not edit.
+# 原始地址：https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Speedtest/Speedtest.list
+# 原作者：blackmatrix7 (https://github.com/blackmatrix7)
+# 来源（按顺序）：vendor/blackmatrix7/ios_rule_script/rule/Surge/Speedtest/Speedtest.list
+# 许可证：GPL-2.0 (blackmatrix7/ios_rule_script)（见 dist/surge/killian/NOTICE.md）
+# 剔除：无，剔除 0 条
+# 规则数：9
+DOMAIN-SUFFIX,fast.com
+DOMAIN-SUFFIX,ooklaserver.net
+DOMAIN-SUFFIX,speed.cloudflare.com
+DOMAIN-SUFFIX,speed.dler.io
+DOMAIN-SUFFIX,speedtest.co
+DOMAIN-SUFFIX,speedtest.net
+DOMAIN-SUFFIX,speedtestcustom.com
+DOMAIN-KEYWORD,speedtest
+USER-AGENT,SpeedTest*

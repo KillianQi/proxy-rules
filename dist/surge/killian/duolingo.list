@@ -1,0 +1,9 @@
+# 由 scripts/build.py 按 composites.yaml 生成（duolingo），请勿手改。Generated file, do not edit.
+# 原始地址：https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Duolingo/Duolingo.list
+# 原作者：blackmatrix7 (https://github.com/blackmatrix7)
+# 来源（按顺序）：vendor/blackmatrix7/ios_rule_script/rule/Surge/Duolingo/Duolingo.list
+# 许可证：GPL-2.0 (blackmatrix7/ios_rule_script)（见 dist/surge/killian/NOTICE.md）
+# 剔除：无，剔除 0 条
+# 规则数：2
+DOMAIN-SUFFIX,duolingo.cn
+DOMAIN-SUFFIX,duolingo.com

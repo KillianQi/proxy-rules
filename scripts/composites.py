@@ -117,6 +117,9 @@ def build_one(c, defaults, warn):
             "# 许可证：" + str(c.get("license", "")) + "（见 dist/surge/killian/NOTICE.md）",
             "# 剔除：" + ("；".join(c.get("exclude") or []) or "无") + "，剔除 %d 条" % removed,
             "# 规则数：%d" % len(out)]
+    origin = c.get("origin")
+    if origin:
+        head[1:1] = ["# 原始地址：" + origin["url"], "# 原作者：" + origin.get("author", "")]
     return "\n".join(head + out) + "\n", len(out)
 
 
@@ -130,7 +133,8 @@ NOTICE = """# dist/surge/killian — 整合列表说明 / NOTICE
 
 - 含 blackmatrix7/ios_rule_script 内容的文件按 **GPL-2.0** 再分发（上游原文见 https://github.com/blackmatrix7/ios_rule_script/blob/master/LICENSE），本目录对应的源码即 `composites.yaml`、`scripts/` 与 `vendor/` 下的原始快照。
 - privacy-protection-tools/anti-AD 与 VPSDance/ai-proxy-rules 为 **MIT**，版权归原作者，许可证原文见各自仓库 LICENSE。
-- 没有声明许可证的上游（如 fatesdf/surge-rules、Blankwonder/surge-list）**不合并、不再分发**，配置里直接引用原地址。
+- `ai-muse.list`（fatesdf/surge-rules）与 `cn.list`（Blankwonder/surge-list）的上游**没有声明许可证**：只做一对一镜像、不与其他内容合并，文件头注明原地址和作者，版权归原作者；原作者提出要求时会立即删除（见 README「致谢」）。
+- 一对一镜像文件（文件头带「原始地址」）的规则与上游逐条一致，只去掉注释和完全重复的行。
 """
 
 
