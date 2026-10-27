@@ -2,7 +2,7 @@
 # 来源（按顺序）：source/usa-native.list；vendor/VPSDance/ai-proxy-rules/rules/surge/global.list
 # 许可证：MIT (VPSDance/ai-proxy-rules)（见 dist/surge/killian/NOTICE.md）
 # 剔除：无，剔除 0 条
-# 规则数：460
+# 规则数：459
 DOMAIN-SUFFIX,sardine.ai
 DOMAIN-SUFFIX,socure.io
 DOMAIN-SUFFIX,withpersona.com
@@ -175,7 +175,6 @@ DOMAIN,cdn.growthbook.io
 DOMAIN,cdn.usefathom.com
 DOMAIN,servd-anthropic-website.b-cdn.net
 DOMAIN,storage.googleapis.com
-DOMAIN-SUFFIX,//github.com/aprilnea/reverse-engineering-claude-code-antspace
 DOMAIN-SUFFIX,ant.dev
 DOMAIN-SUFFIX,anthropic.team
 DOMAIN-SUFFIX,chatbotclaude.com
