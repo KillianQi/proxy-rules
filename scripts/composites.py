@@ -3,7 +3,8 @@
 
 Called by scripts/build.py. Rules:
   * inputs are concatenated in order; comments dropped; exact duplicate lines removed (first kept);
-  * exclude/*.list entries are removed (DOMAIN = exact entry, DOMAIN-SUFFIX = that domain and its subdomains);
+  * exclude/*.list entries are removed (DOMAIN = identical DOMAIN entry only, covering suffix entries are kept;
+    DOMAIN-SUFFIX = that domain and every entry under it);
   * fail-safe: an output below min_rules, or shrunk by more than max_shrink versus the previous
     published file, keeps the previous file (warning); with no previous file the build fails.
 """
@@ -53,11 +54,19 @@ def load_exclude(paths):
 
 
 def excluded(t, v, exact, suffix, warn):
+    """DOMAIN allow entry: drop only the identical DOMAIN entry; a covering suffix entry is KEPT
+    (dropping it would also unblock subdomains) and reported. DOMAIN-SUFFIX allow entry: drop the
+    domain and every DOMAIN / DOMAIN-SUFFIX entry under it."""
     if t not in ("DOMAIN", "DOMAIN-SUFFIX"):
         return False
     v = v.lower()
     if t == "DOMAIN" and v in exact:
         return True
+    if t == "DOMAIN-SUFFIX":
+        for a in exact:
+            if a == v or a.endswith("." + v):
+                warn.append("allow-listed %s is still covered by suffix entry %s (kept; the config's earlier "
+                            "direct rule decides)" % (a, v))
     for s in suffix:
         if v == s or v.endswith("." + s):
             return True
