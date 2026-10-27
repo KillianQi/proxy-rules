@@ -34,7 +34,7 @@ Self-maintained Surge / mihomo rule sets plus daily backup snapshots of the thir
 
 ### 整合列表（`dist/surge/killian/`）
 
-由 `composites.yaml` 定义，每天随 sync 自动从 `vendor/` 快照重建：只合并在配置里原本相邻、策略相同的列表，保持顺序，去掉完全重复的行，并按 `exclude/` 剔除白名单条目。任一列表低于下限或比上一版缩水超过 30% 时保留上一版。许可证见 `dist/surge/killian/NOTICE.md`（含 blackmatrix7 内容的文件按 GPL-2.0 再分发；没有许可证的上游不合并）。
+由 `composites.yaml` 定义，每天随 sync 自动从 `vendor/` 快照重建：只合并在配置里原本相邻、策略相同的列表，保持顺序，去掉完全重复的行，并按 `exclude/` 剔除白名单条目。任一列表低于下限或比上一版缩水超过 30% 时保留上一版。许可证见 `dist/surge/killian/NOTICE.md`（含 blackmatrix7 内容的文件按 GPL-2.0 再分发）。Killian 的托管配置只引用本仓库：配置里出现过的每个第三方列表都在这里有一对一镜像（文件头写明原地址和作者），每天 03:30（UTC+8）随 sync 自动更新。
 
 ## 引用方式
 
@@ -66,6 +66,20 @@ rule-providers:
 
 1. 只改 `source/*.list`（一行一条，不写策略；新增放进对应分组的注释下）；要从上游剔除的写进 `exclude/`。改完运行 `python3 scripts/build.py` 并提交 `dist/`。
 2. 某个第三方地址失效时：先把配置临时指到本仓库 `vendor/` 下的同名快照，再找替代上游并更新 `upstreams.yaml`。
+
+## 致谢 / Acknowledgements
+
+本仓库镜像了以下作者的规则列表，感谢他们的工作：
+
+- [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script)（GPL-2.0）
+- [privacy-protection-tools/anti-AD](https://github.com/privacy-protection-tools/anti-AD)（MIT）
+- [VPSDance/ai-proxy-rules](https://github.com/VPSDance/ai-proxy-rules)（MIT）
+- [MetaCubeX/meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat)（GPL-3.0，仅 vendor 快照）
+- [fatesdf/surge-rules](https://github.com/fatesdf/surge-rules) 的 `ai-muse.conf` → `dist/surge/killian/ai-muse.list`
+- [Blankwonder/surge-list](https://github.com/Blankwonder/surge-list) 的 `cn.list` → `dist/surge/killian/cn.list`
+
+后两个上游没有声明许可证，版权归原作者所有；这里只做带出处的原样镜像，供本人配置使用。**原作者如不同意镜像，请开 issue 告知，会立即删除。**
+If you are the author of a mirrored list and want it removed, open an issue and it will be taken down promptly.
 
 ## 许可证
 

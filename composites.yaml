@@ -1,6 +1,6 @@
 # composites.yaml — 整合列表定义（只给 Killian 的托管配置用，输出到 dist/surge/killian/）
 # 规则：只合并在配置里原本相邻、策略和选项相同的列表，保持原有顺序；列表不写策略。
-# 字段：inputs 有序输入（source/ 或 vendor/ 路径；也可写 {path, only_types|drop_types} 按规则类型筛选）；exclude 剔除文件；format ruleset|domainset；
+# 字段：origin 一对一镜像的原地址与作者（写进文件头）；inputs 有序输入（source/ 或 vendor/ 路径；也可写 {path, only_types|drop_types} 按规则类型筛选）；exclude 剔除文件；format ruleset|domainset；
 #       min_rules 下限；max_shrink 相对上一版允许缩水的比例（超过则保留上一版并告警）。
 # 许可证：license 写合并产物需遵守的上游许可证（见 dist/surge/killian/NOTICE.md）。
 defaults:
@@ -67,3 +67,146 @@ composites:
       - vendor/blackmatrix7/ios_rule_script/rule/Surge/Steam/Steam.list
       - vendor/blackmatrix7/ios_rule_script/rule/Surge/Nintendo/Nintendo.list
     min_rules: 250
+
+  # ---- 一对一镜像（T-0050 全量迁移）：托管配置里每条第三方 RULE-SET 换成本仓库同名镜像，内容与上游逐条一致 ----
+  - name: icloud
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    origin: {url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/iCloud/iCloud.list, author: "blackmatrix7 (https://github.com/blackmatrix7)"}
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/iCloud/iCloud.list
+    min_rules: 42
+  - name: apple
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    origin: {url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Apple/Apple_All_No_Resolve.list, author: "blackmatrix7 (https://github.com/blackmatrix7)"}
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/Apple/Apple_All_No_Resolve.list
+    min_rules: 1130
+  - name: bing
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    origin: {url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Bing/Bing.list, author: "blackmatrix7 (https://github.com/blackmatrix7)"}
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/Bing/Bing.list
+    min_rules: 6
+  - name: github
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    origin: {url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GitHub/GitHub.list, author: "blackmatrix7 (https://github.com/blackmatrix7)"}
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/GitHub/GitHub.list
+    min_rules: 21
+  - name: microsoft
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    origin: {url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Microsoft/Microsoft.list, author: "blackmatrix7 (https://github.com/blackmatrix7)"}
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/Microsoft/Microsoft.list
+    min_rules: 471
+  - name: telegram
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    origin: {url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Telegram/Telegram.list, author: "blackmatrix7 (https://github.com/blackmatrix7)"}
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/Telegram/Telegram.list
+    min_rules: 32
+  - name: google
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    origin: {url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Google/Google.list, author: "blackmatrix7 (https://github.com/blackmatrix7)"}
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/Google/Google.list
+    min_rules: 492
+  - name: googlevoice
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    origin: {url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GoogleVoice/GoogleVoice.list, author: "blackmatrix7 (https://github.com/blackmatrix7)"}
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/GoogleVoice/GoogleVoice.list
+    min_rules: 1
+  - name: youtube
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    origin: {url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/YouTube/YouTube.list, author: "blackmatrix7 (https://github.com/blackmatrix7)"}
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/YouTube/YouTube.list
+    min_rules: 133
+  - name: spotify
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    origin: {url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Spotify/Spotify.list, author: "blackmatrix7 (https://github.com/blackmatrix7)"}
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/Spotify/Spotify.list
+    min_rules: 21
+  - name: globalmedia
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    origin: {url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GlobalMedia/GlobalMedia_All_No_Resolve.list, author: "blackmatrix7 (https://github.com/blackmatrix7)"}
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/GlobalMedia/GlobalMedia_All_No_Resolve.list
+    min_rules: 1634
+  - name: proxy-all
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    origin: {url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Proxy/Proxy_All_No_Resolve.list, author: "blackmatrix7 (https://github.com/blackmatrix7)"}
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/Proxy/Proxy_All_No_Resolve.list
+    min_rules: 4895
+  - name: cloudflare
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    origin: {url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Cloudflare/Cloudflare.list, author: "blackmatrix7 (https://github.com/blackmatrix7)"}
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/Cloudflare/Cloudflare.list
+    min_rules: 45
+  - name: speedtest
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    origin: {url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Speedtest/Speedtest.list, author: "blackmatrix7 (https://github.com/blackmatrix7)"}
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/Speedtest/Speedtest.list
+    min_rules: 6
+  - name: wechat
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    origin: {url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/WeChat/WeChat.list, author: "blackmatrix7 (https://github.com/blackmatrix7)"}
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/WeChat/WeChat.list
+    min_rules: 232
+  - name: duolingo
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    origin: {url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Duolingo/Duolingo.list, author: "blackmatrix7 (https://github.com/blackmatrix7)"}
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/Duolingo/Duolingo.list
+    min_rules: 1
+  - name: hijacking
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    origin: {url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Hijacking/Hijacking.list, author: "blackmatrix7 (https://github.com/blackmatrix7)"}
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/Hijacking/Hijacking.list
+    min_rules: 159
+  - name: chinaasn
+    format: ruleset
+    license: GPL-2.0 (blackmatrix7/ios_rule_script)
+    origin: {url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/ChinaASN/ChinaASN_Resolve.list, author: "blackmatrix7 (https://github.com/blackmatrix7)"}
+    inputs:
+      - vendor/blackmatrix7/ios_rule_script/rule/Surge/ChinaASN/ChinaASN_Resolve.list
+    min_rules: 706
+  # 以下两个上游没有声明许可证：经 Killian 同意镜像，文件头注明原地址与作者，原作者要求时立即删除（README「致谢」）
+  - name: ai-muse
+    format: ruleset
+    license: "none — no LICENSE upstream; mirrored with attribution, removed on request"
+    origin: {url: https://raw.githubusercontent.com/fatesdf/surge-rules/refs/heads/main/ai-muse.conf, author: "fatesdf (https://github.com/fatesdf)"}
+    inputs:
+      - vendor/fatesdf/surge-rules/ai-muse.conf
+    min_rules: 30
+  - name: cn
+    format: ruleset
+    license: "none — no LICENSE upstream; mirrored with attribution, removed on request"
+    origin: {url: https://raw.githubusercontent.com/Blankwonder/surge-list/master/cn.list, author: "Blankwonder (https://github.com/Blankwonder)"}
+    inputs:
+      - vendor/Blankwonder/surge-list/cn.list
+    min_rules: 8

@@ -306,3 +306,19 @@ upstreams:
     license: MIT
     kind: text
     min_lines: 20889
+  # 下面两个上游没有声明许可证（默认保留所有权利）。经 Killian 同意镜像，文件头注明原地址与作者；
+  # 原作者要求时立即删除（见 README「致谢」）。
+  - name: fatesdf-ai-muse
+    url: https://raw.githubusercontent.com/fatesdf/surge-rules/refs/heads/main/ai-muse.conf
+    path: vendor/fatesdf/surge-rules/ai-muse.conf
+    license: none (no LICENSE upstream; mirrored with attribution, removed on request)
+    author: fatesdf (https://github.com/fatesdf)
+    kind: text
+    min_lines: 30
+  - name: blankwonder-cn-list
+    url: https://raw.githubusercontent.com/Blankwonder/surge-list/master/cn.list
+    path: vendor/Blankwonder/surge-list/cn.list
+    license: none (no LICENSE upstream; mirrored with attribution, removed on request)
+    author: Blankwonder (https://github.com/Blankwonder)
+    kind: text
+    min_lines: 8
