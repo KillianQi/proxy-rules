@@ -2,7 +2,7 @@
 # 来源（按顺序）：source/usa-native.list；vendor/VPSDance/ai-proxy-rules/rules/surge/global.list
 # 许可证：MIT (VPSDance/ai-proxy-rules)（见 dist/surge/killian/NOTICE.md）
 # 剔除：无，剔除 0 条
-# 规则数：459
+# 规则数：463
 DOMAIN-SUFFIX,sardine.ai
 DOMAIN-SUFFIX,socure.io
 DOMAIN-SUFFIX,withpersona.com
@@ -301,6 +301,9 @@ DOMAIN,alkalicore-pa.clients6.google.com
 DOMAIN,alkalimakersuite-pa.clients6.google.com
 DOMAIN,antigravity-pa.googleapis.com
 DOMAIN,antigravity.googleapis.com
+DOMAIN,appsgenaiserver-pa.clients.google.com
+DOMAIN,appsgenaiserver-pa.clients6.google.com
+DOMAIN,appsgenaiserver-pa.googleapis.com
 DOMAIN,cloudaicompanion.googleapis.com
 DOMAIN,cloudcode-pa.googleapis.com
 DOMAIN,daily-cloudcode-pa.googleapis.com
@@ -366,6 +369,7 @@ DOMAIN-SUFFIX,atmeta.com
 DOMAIN-SUFFIX,llama.com
 DOMAIN-SUFFIX,llamameta.net
 DOMAIN-SUFFIX,meta.ai
+DOMAIN-SUFFIX,metaaiusercontent.com
 DOMAIN-SUFFIX,muse.ai
 DOMAIN-SUFFIX,midjourney.com
 DOMAIN-SUFFIX,mistral.ai
