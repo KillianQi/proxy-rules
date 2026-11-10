@@ -2,7 +2,7 @@
 # 来源（按顺序）：source/usa-native.list；vendor/VPSDance/ai-proxy-rules/rules/surge/global.list
 # 许可证：MIT (VPSDance/ai-proxy-rules)（见 dist/surge/killian/NOTICE.md）
 # 剔除：无，剔除 0 条
-# 规则数：463
+# 规则数：465
 DOMAIN-SUFFIX,sardine.ai
 DOMAIN-SUFFIX,socure.io
 DOMAIN-SUFFIX,withpersona.com
@@ -240,6 +240,7 @@ DOMAIN,copilotprodattachments.blob.core.windows.net
 DOMAIN,gateway.bingviz.microsoft.net
 DOMAIN,gateway.bingviz.microsoftapp.net
 DOMAIN,in.appcenter.ms
+DOMAIN,production-copilot-host-westus.webpubsub.azure.com
 DOMAIN,self.events.data.microsoft.com
 DOMAIN,static.cloudflareinsights.com
 DOMAIN,sydney.bing.com
@@ -459,6 +460,7 @@ PROCESS-NAME,Windsurf.exe
 PROCESS-NAME,windsurf
 DOMAIN-SUFFIX,grok.com
 DOMAIN-SUFFIX,grok.x.com
+DOMAIN-SUFFIX,grokbot.com
 DOMAIN-SUFFIX,grokipedia.com
 DOMAIN-SUFFIX,x.ai
 DOMAIN-SUFFIX,you.com
