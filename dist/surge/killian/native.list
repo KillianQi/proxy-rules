@@ -2,7 +2,7 @@
 # 来源（按顺序）：source/usa-native.list；vendor/VPSDance/ai-proxy-rules/rules/surge/global.list
 # 许可证：MIT (VPSDance/ai-proxy-rules)（见 dist/surge/killian/NOTICE.md）
 # 剔除：无，剔除 0 条
-# 规则数：466
+# 规则数：467
 DOMAIN-SUFFIX,sardine.ai
 DOMAIN-SUFFIX,socure.io
 DOMAIN-SUFFIX,withpersona.com
@@ -322,6 +322,7 @@ DOMAIN-SUFFIX,flow.google
 DOMAIN-SUFFIX,flow.google.com
 DOMAIN-SUFFIX,geller-pa.googleapis.com
 DOMAIN-SUFFIX,gemini.gstatic.com
+DOMAIN-SUFFIX,gemma.ai
 DOMAIN-SUFFIX,jules.google
 DOMAIN-SUFFIX,jules.google.com
 DOMAIN-SUFFIX,labs.google
